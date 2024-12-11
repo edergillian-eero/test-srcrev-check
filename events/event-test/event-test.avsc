@@ -1,0 +1,57 @@
+{
+   "name": "test.event",
+   "namespace": "com.test.events",
+   "doc": "Testing event docs.\\n**Since:** v0.0.0",
+   "fields": [
+      {
+         "name": "client",
+         "type": "string",
+         "doc": "Client's name"
+      },
+      {
+         "name": "address",
+         "type": "string",
+         "doc": "Client Address"
+      },
+      {
+         "name": "description",
+         "type": "string",
+         "doc": "Client's description"
+      },
+      {
+         "name": "timestamp",
+         "type": "string",
+         "doc": "Timestamp when received by the me",
+         "aliases": [
+            "@timestamp"
+         ]
+      },
+      {
+         "name": "otherProperties",
+         "type": "string",
+         "doc": "Other Properties seen, but not reflected in schema.",
+         "default": "{}"
+      },
+      {
+         "name": "role",
+         "type": [
+            "string",
+            "null"
+         ],
+         "doc": "Role client plays on this"
+      },
+      {
+         "name": "_country",
+         "type": [
+            "string",
+            "null"
+         ],
+         "doc": "Country as a two-letter ISO 3166 code",
+         "default": "Unknown"
+      }
+   ],
+   "aliases": [
+      "test.event"
+   ],
+   "type": "record"
+}

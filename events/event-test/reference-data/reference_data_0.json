@@ -1,0 +1,14 @@
+{
+   "@timestamp": "2023-12-14T08:40:44.767Z",
+   "@version": "1",
+   "msg": "",
+   "details": {
+      "address": "Test Av. 1234",
+      "client": "192.168.5.187",
+      "description": "Test description",
+      "timestamp": 1702542333718,
+      "name": "test.event",
+      "role": "gateway",
+      "_country": "BR"
+   }
+}

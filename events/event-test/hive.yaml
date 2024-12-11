@@ -1,0 +1,5 @@
+InstanceProfileArn: arn:aws:iam::<account>:instance-profile/<instance_profile>
+BucketLocation: s3://<bucket>/<prefix>
+Partitions:
+  dt: string
+  group: string

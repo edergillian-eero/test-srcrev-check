@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=../../config_schemas/deployment-meta-data.schema.json
+
+DataClassification: CONFIDENTIAL
+Deployments:
+- test-events
+EventType: test-events
+Name: test.event
+RetentionDays: 730
+prod:
+   kafka:
+      config:
+         retention.bytes: 46097405333
+      partitions: 1
+      replication.factor: 2
+stage:
+   kafka:
+      config:
+         retention.bytes: 46097405333
+      partitions: 1
+      replication.factor: 2
