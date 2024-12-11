@@ -46,7 +46,7 @@
             "string",
             "null"
          ],
-         "doc": "Country as a two-letter ISO 3166 code",
+         "doc": "Country as a two-letter code",
          "default": "Unknown"
       }
    ],

@@ -4,7 +4,7 @@
    "msg": "",
    "details": {
       "address": "Test Av. 1234",
-      "client": "192.168.5.187",
+      "client": "Test Testing Tested",
       "description": "Test description",
       "timestamp": 1702542333718,
       "name": "test.event",
