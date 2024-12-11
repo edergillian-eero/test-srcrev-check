@@ -20,12 +20,13 @@ jobs:
           BOT_USER_ID: ${{ github.actor_id }}
           GH_TOKEN: ${{ secrets.PAT }}
         run: |
-          # create avrodocs folder
-          mkdir -p avrodocs
-          npx @mikaello/avrodoc-plus -i events -o avrodocs/index.html --title "Example page for Avro Docs"
           git config --global url.https://x-access-token:$GH_TOKEN@github.com/.insteadOf https://github.com/
           git config user.email "$BOT_USER_ID+$BOT_USER@users.noreply.github.com"
           git config user.name "$BOT_USER"
+          git checkout docs
+          # create avrodocs folder
+          mkdir -p avrodocs
+          npx @mikaello/avrodoc-plus -i events -o avrodocs/index.html --title "Example page for Avro Docs"
           git add avrodocs
           git commit -m "Generating Avro docs from changes by $BOT_USER"
           git push
