@@ -38,7 +38,7 @@
             "string",
             "null"
          ],
-         "doc": "Role client plays on this"
+         "doc": "Role played by client"
       },
       {
          "name": "_country",
