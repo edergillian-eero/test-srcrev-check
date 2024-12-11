@@ -1,21 +1,32 @@
 name: trigger jenkins job
-on: [push]
+on:
+  push:
+    branches:
+      - 'main'
+  
+  workflow_dispatch:
 
-# on:
-    # pull_request_target:
-    #   types: [closed]
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write
+  id-token: write
 
 jobs:
-    build:
-        # if: (github.event.pull_request.merged == true) && !(startsWith(github.head_ref, 'auto-pr/'))
-        name: Build
-        runs-on: ubuntu-latest
-        steps:
-        - name: trigger single Job
-          uses: appleboy/jenkins-action@master
-          with:
-            url: "https://node-build.e2ro.com"
-            user: "eder.beserra"
-            token: ${{ secrets.TOKEN }}
-            job: "recipe_branch_test"
-            parameters: 
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Generate Avro Docs
+        env:
+          BOT_USER: ${{ github.actor }}
+          BOT_USER_ID: ${{ github.actor_id }}
+        run: |
+          # create avrodocs folder
+          mkdir -p avrodocs
+          npx @mikaello/avrodoc-plus -i events -o avrodocs/index.html
+          git config user.email "$BOT_USER_ID+$BOT_USER@users.noreply.github.com"
+          git config user.name "$BOT_USER"
+          git add avrodocs
+          git commit -m "Generating Avro docs from changes by $BOT_USER"
+          git push
