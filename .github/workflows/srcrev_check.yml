@@ -31,6 +31,7 @@ jobs:
         env:
           BOT_USER: ${{ github.actor }}
           BOT_USER_ID: ${{ github.actor_id }}
+        shell: bash {0}
         run: |
           git config --global url.https://x-access-token:$GH_TOKEN@github.com/.insteadOf https://github.com/
           git config user.email "$BOT_USER_ID+$BOT_USER@users.noreply.github.com"
@@ -42,10 +43,12 @@ jobs:
           git add avrodocs
           git commit -m "Generating Avro docs from changes by $BOT_USER"
           git checkout docs
-          (git cherry-pick main || true)
-          git checkout --theirs avrodocs
-          git add avrodocs
-          (git commit -m "Generating Avro docs from changes by $BOT_USER" || true)
+          git cherry-pick main
+          if [ $? -ne 0 ]; then
+            git checkout --theirs avrodocs
+            git add avrodocs
+            (git commit -m "Generating Avro docs from changes by $BOT_USER" || true)
+          fi
           git push
       - name: Setup Pages
         uses: actions/configure-pages@v5
