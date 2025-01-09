@@ -27,13 +27,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.PAT }}
       - name: Generate Avro Docs
         env:
           BOT_USER: ${{ github.actor }}
           BOT_USER_ID: ${{ github.actor_id }}
-          GH_TOKEN: ${{ secrets.PAT }}
         run: |
           git config --global url.https://x-access-token:$GH_TOKEN@github.com/.insteadOf https://github.com/
           git config user.email "$BOT_USER_ID+$BOT_USER@users.noreply.github.com"
