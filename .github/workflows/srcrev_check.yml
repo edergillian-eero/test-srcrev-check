@@ -40,12 +40,12 @@ jobs:
           mkdir -p avrodocs
           npx @mikaello/avrodoc-plus -i events -o avrodocs/index.html --title "Example page for Avro Docs"
           git add avrodocs
-          git commit -m 'temp commit'
+          git commit -m "Generating Avro docs from changes by $BOT_USER"
           git checkout docs
           (git cherry-pick main || true)
           git checkout --theirs avrodocs
           git add avrodocs
-          git commit -m "Generating Avro docs from changes by $BOT_USER"
+          (git commit -m "Generating Avro docs from changes by $BOT_USER" || true)
           git push
       - name: Setup Pages
         uses: actions/configure-pages@v5
