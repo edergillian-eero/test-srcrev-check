@@ -42,7 +42,7 @@ jobs:
           git add avrodocs
           git commit -m 'temp commit'
           git checkout docs
-          git cherry-pick main
+          (git cherry-pick main || true)
           git checkout --theirs avrodocs
           git add avrodocs
           git commit -m "Generating Avro docs from changes by $BOT_USER"
