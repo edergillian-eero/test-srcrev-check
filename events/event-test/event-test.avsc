@@ -46,7 +46,7 @@
             "string",
             "null"
          ],
-         "doc": "Country as a two-letter code BIRL",
+         "doc": "Country as a two-letter code BIRL HU3BR",
          "default": "Unknown"
       }
    ],
