@@ -39,7 +39,9 @@ jobs:
           # create avrodocs folder
           mkdir -p avrodocs
           npx @mikaello/avrodoc-plus -i events -o avrodocs/index.html --title "Example page for Avro Docs"
+          git stash
           git checkout docs
+          git stash pop
           git add avrodocs
           git commit -m "Generating Avro docs from changes by $BOT_USER"
           git push
